@@ -1,0 +1,1015 @@
+fileFormatVersion: 2
+guid: cb6a90455c4f31e4691272f1b0999e6f
+timeCreated: 1479967901
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_R
+    100004: Armature
+    100006: Elbow_L
+    100008: Elbow_R
+    100010: Foot_L
+    100012: Foot_R
+    100014: Hand_L
+    100016: Hand_R
+    100018: Head
+    100020: hips_L
+    100022: hips_R
+    100024: Knee_L
+    100026: Knee_R
+    100028: MiddleSpine
+    100030: Neck
+    100032: Ratman
+    100034: //RootNode
+    100036: Root
+    100038: Shoulder_L
+    100040: Shoulder_R
+    400000: Arm_L
+    400002: Arm_R
+    400004: Armature
+    400006: Elbow_L
+    400008: Elbow_R
+    400010: Foot_L
+    400012: Foot_R
+    400014: Hand_L
+    400016: Hand_R
+    400018: Head
+    400020: hips_L
+    400022: hips_R
+    400024: Knee_L
+    400026: Knee_R
+    400028: MiddleSpine
+    400030: Neck
+    400032: Ratman
+    400034: //RootNode
+    400036: Root
+    400038: Shoulder_L
+    400040: Shoulder_R
+    2300000: Ratman
+    3300000: Ratman
+    4300000: Ratman_001
+    4300002: Ratman
+    7400000: ready
+    7400002: run
+    7400004: walk
+    7400006: armscrossed
+    7400008: balance
+    7400010: dive
+    7400012: get_up
+    7400014: get_up_back
+    7400016: stand
+    7400018: balance0
+    7400020: run0
+    7400022: stand0
+    7400024: get_up_back0
+    7400026: get_up0
+    7400028: lay_back
+    7400030: lay_down
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Ratman
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: balance
+      takeName: balance
+      firstFrame: 0
+      lastFrame: 41
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Root
+        weight: 0
+      - path: Armature/Root/hips_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L/Foot_L
+        weight: 0
+      - path: Armature/Root/hips_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R/Foot_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck/Head
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L/Hand_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R/Hand_R
+        weight: 0
+      - path: Ratman
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: dive
+      takeName: dive
+      firstFrame: 0
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Root
+        weight: 0
+      - path: Armature/Root/hips_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L/Foot_L
+        weight: 0
+      - path: Armature/Root/hips_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R/Foot_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck/Head
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L/Hand_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R/Hand_R
+        weight: 0
+      - path: Ratman
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: get_up
+      takeName: get_up
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Root
+        weight: 0
+      - path: Armature/Root/hips_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L/Foot_L
+        weight: 0
+      - path: Armature/Root/hips_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R/Foot_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck/Head
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L/Hand_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R/Hand_R
+        weight: 0
+      - path: Ratman
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: get_up_back
+      takeName: get_up_back
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0.09
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Root
+        weight: 0
+      - path: Armature/Root/hips_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L/Foot_L
+        weight: 0
+      - path: Armature/Root/hips_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R/Foot_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck/Head
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L/Hand_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R/Hand_R
+        weight: 0
+      - path: Ratman
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: run
+      takeName: run
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Root
+        weight: 0
+      - path: Armature/Root/hips_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L/Foot_L
+        weight: 0
+      - path: Armature/Root/hips_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R/Foot_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck/Head
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L/Hand_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R/Hand_R
+        weight: 0
+      - path: Ratman
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: stand
+      takeName: stand
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Root
+        weight: 0
+      - path: Armature/Root/hips_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L
+        weight: 0
+      - path: Armature/Root/hips_L/Knee_L/Foot_L
+        weight: 0
+      - path: Armature/Root/hips_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R
+        weight: 0
+      - path: Armature/Root/hips_R/Knee_R/Foot_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Neck/Head
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L/Hand_L
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R
+        weight: 0
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R/Hand_R
+        weight: 0
+      - path: Ratman
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: armscrossed
+      takeName: armscrossed
+      firstFrame: 0
+      lastFrame: 69
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/hips_L
+        weight: 1
+      - path: Armature/Root/hips_L/Knee_L
+        weight: 1
+      - path: Armature/Root/hips_L/Knee_L/Foot_L
+        weight: 1
+      - path: Armature/Root/hips_R
+        weight: 1
+      - path: Armature/Root/hips_R/Knee_R
+        weight: 1
+      - path: Armature/Root/hips_R/Knee_R/Foot_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Neck
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Neck/Head
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L/Hand_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R/Hand_R
+        weight: 1
+      - path: Ratman
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: lay_back
+      takeName: lay_back
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/hips_L
+        weight: 1
+      - path: Armature/Root/hips_L/Knee_L
+        weight: 1
+      - path: Armature/Root/hips_L/Knee_L/Foot_L
+        weight: 1
+      - path: Armature/Root/hips_R
+        weight: 1
+      - path: Armature/Root/hips_R/Knee_R
+        weight: 1
+      - path: Armature/Root/hips_R/Knee_R/Foot_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Neck
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Neck/Head
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L/Hand_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R/Hand_R
+        weight: 1
+      - path: Ratman
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: lay_down
+      takeName: lay_down
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/hips_L
+        weight: 1
+      - path: Armature/Root/hips_L/Knee_L
+        weight: 1
+      - path: Armature/Root/hips_L/Knee_L/Foot_L
+        weight: 1
+      - path: Armature/Root/hips_R
+        weight: 1
+      - path: Armature/Root/hips_R/Knee_R
+        weight: 1
+      - path: Armature/Root/hips_R/Knee_R/Foot_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Neck
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Neck/Head
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_L/Arm_L/Elbow_L/Hand_L
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R
+        weight: 1
+      - path: Armature/Root/MiddleSpine/Shoulder_R/Arm_R/Elbow_R/Hand_R
+        weight: 1
+      - path: Ratman
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: Root
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: hips_L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: hips_R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Knee_L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Knee_R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MiddleSpine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder_L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder_R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm_L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm_R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Elbow_L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Elbow_R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: ratman_mecanim(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Armature
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Root
+      position: {x: 0, y: 0.01662612, z: 1.0570343}
+      rotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+      scale: {x: 1.0000007, y: 1.0000007, z: 1.0000008}
+      transformModified: 1
+    - name: MiddleSpine
+      position: {x: -0.25457752, y: 0.000000019220067, z: -0.000000013038516}
+      rotation: {x: -1, y: -0, z: 0.000000021073424, w: -0.00000006322027}
+      scale: {x: 0.99999976, y: 0.99999976, z: 0.9999995}
+      transformModified: 1
+    - name: Shoulder_L
+      position: {x: -0.3436091, y: 0.1186736, z: 0.000000003018053}
+      rotation: {x: 0.5, y: -0.49999994, z: -0.50000006, w: 0.49999994}
+      scale: {x: 0.99999994, y: 1, z: 1}
+      transformModified: 1
+    - name: Arm_L
+      position: {x: -0.17959571, y: 0.000000004062219, z: -0.000000007450585}
+      rotation: {x: 0.9992149, y: 0.036886197, z: -0.014291255, w: -0.0022206453}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000006}
+      transformModified: 1
+    - name: Elbow_L
+      position: {x: -0.27450824, y: 0.000000011175871, z: -0.000000026077032}
+      rotation: {x: -0.99842334, y: -0.055164456, z: 0.010326971, w: -0.0010041952}
+      scale: {x: 1.0000001, y: 1.0000004, z: 0.99999994}
+      transformModified: 1
+    - name: Hand_L
+      position: {x: -0.2944389, y: -0.000000088475645, z: 0.00000000372529}
+      rotation: {x: -0.0082764095, y: -0.115192674, z: 0.025535004, w: 0.9929805}
+      scale: {x: 1.0000001, y: 1.0000008, z: 1.0000008}
+      transformModified: 1
+    - name: Neck
+      position: {x: -0.3436091, y: 0.000000025941766, z: 0}
+      rotation: {x: 0.000000061747514, y: -0.21458949, z: 0.000000105642854, w: 0.9767043}
+      scale: {x: 1.0000008, y: 1.0000008, z: 1.0000006}
+      transformModified: 1
+    - name: Head
+      position: {x: -0.13550718, y: -0.000000024912879, z: -0.000000001862645}
+      rotation: {x: -0, y: -0, z: 6.2172477e-15, w: 1}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1.0000005}
+      transformModified: 1
+    - name: Shoulder_R
+      position: {x: -0.3436091, y: -0.118673556, z: -0.000000017919215}
+      rotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.50000006}
+      scale: {x: 1.0000012, y: 1.0000002, z: 1.0000011}
+      transformModified: 1
+    - name: Arm_R
+      position: {x: -0.17959572, y: 0.000000007786014, z: -0.000000018626455}
+      rotation: {x: 0.9992149, y: -0.036886346, z: -0.014291285, w: 0.0022207645}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+      transformModified: 1
+    - name: Elbow_R
+      position: {x: -0.27450827, y: 0.000000037252903, z: 0.00000008568168}
+      rotation: {x: -0.9984234, y: 0.055164535, z: 0.010326997, w: 0.0010040778}
+      scale: {x: 1, y: 1.0000008, z: 0.99999964}
+      transformModified: 1
+    - name: Hand_R
+      position: {x: -0.2944388, y: 0.000000014901161, z: 0.000000017695129}
+      rotation: {x: 0.008276488, y: -0.1151927, z: -0.025534986, w: 0.9929804}
+      scale: {x: 1.0000001, y: 0.99999964, z: 0.9999999}
+      transformModified: 1
+    - name: hips_L
+      position: {x: -0.000000014205902, y: -0.16349138, z: -0.000000022351742}
+      rotation: {x: 0.05298786, y: 0.000000083819025, z: 0.9985952, w: 0}
+      scale: {x: 0.9999995, y: 0.9999994, z: 0.9999994}
+      transformModified: 1
+    - name: Knee_L
+      position: {x: -0.39625865, y: 0.000000028172508, z: 0.000000013737008}
+      rotation: {x: 0.00000009906908, y: 0.014668567, z: -0.000000066176575, w: -0.9998924}
+      scale: {x: 0.99999946, y: 1.0000002, z: 0.99999976}
+      transformModified: 1
+    - name: Foot_L
+      position: {x: -0.5463923, y: 0.000000014901161, z: -0.000000007450581}
+      rotation: {x: 0.11039302, y: -0.720353, z: 0.088794015, w: -0.67898506}
+      scale: {x: 1, y: 1.0000004, z: 1.000001}
+      transformModified: 1
+    - name: hips_R
+      position: {x: 0.000000010480612, y: 0.16349138, z: -0.000000022351742}
+      rotation: {x: -0.0529879, y: 0.00000008568167, z: -0.99859524, w: 0.000000029802319}
+      scale: {x: 1.0000006, y: 1.0000002, z: 1.0000005}
+      transformModified: 1
+    - name: Knee_R
+      position: {x: -0.39625862, y: 0.000000029802322, z: 0.000000002590241}
+      rotation: {x: -0.00000015516848, y: 0.014668489, z: -0.000000050199503, w: -0.9998925}
+      scale: {x: 0.9999997, y: 0.9999993, z: 1.0000002}
+      transformModified: 1
+    - name: Foot_R
+      position: {x: -0.54639244, y: 0.000000023949724, z: -0.000000044936314}
+      rotation: {x: 0.11039319, y: 0.720353, z: 0.08879396, w: 0.67898506}
+      scale: {x: 1.0000005, y: 0.9999997, z: 1.0000008}
+      transformModified: 1
+    - name: Ratman
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

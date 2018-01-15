@@ -1,0 +1,443 @@
+﻿2016-11-18
+ULTIMATE RAGDOLL GENERATOR: THE DE-FACTO RAGDOLL UTILITY FOR UNITY
+EASY TO USE, POWERFUL AND FEATURE RICH, GREAT SUPPORT
+© THE ARC GAMES STUDIO 2016
+http://unity.thearcgames.com
+
+USER CLASSES AND FUNCTIONS REFERENCE
+
+
+
+
+PLEASE CONSULT THE README FILE FOR ESSENTIAL USAGE INFORMATION
+
+INTRODUCTION
+
+URG! and its companion utilities are editor scripts that setup any valid gameobject's physical component characteristics in editor mode, and install the required management classes into the chosen hosts, to be consequently referred by the user utilities in Play Mode.
+This reference is for all versions, since editor classes source files are only available and modifiable with a Developer license, but user classes methods and sources are available in all versions.
+Additionally, modification of editor classes is not required to achieve a customized behavior, but it is certainly fundamental to fine tune ragdoll creation, and for example automatically install any custom desired component or class that interacts with physics or game character parts.
+Expansion of user classes on the other hand is often a requisite to perform custom actions on ragdolled characters.
+
+Basic workflows available (all cases are equally achievable on animated and non animated initial states)
+- character gameobject transition into ragdoll: out of the box on all versions, with a call to any of the ragdolling routines.
+- character transition into ragdoll, and consecutive transition back to animation: out of the box on all versions, requires use of the animation states manager and of the included transition routines.
+- body part detachment: out of the box on all versions, requires use of the dismemberator manager and of the included transition routines.
+- detachment test: specific usage of the dismemberator tester script to verify a game model dismemberment part by part.
+
+NAMING AND CONVENTIONS
+- All variables, properties, classes, etc. are identified by prefixes that are meant to facilitate Intellisense usage.
+	IMPORTANT: as of version 4.6.3f1, Unity 4 does not correctly support namespacing for certain unity editor extensions like URG. URG's naming conventions are intended to work around the problem.
+- Scripts and classes are identified by the 'cls' (class) particle. 'clsurgsnapshot' is the 'urg snapshot' class and file.
+- Editor scripts are identified by the 'edt' (editor) particle. 'edturganimationstates' is the 'urg animation states' editor script.
+- Variables are identified by the 'var' (variable) particle. 'varsource' stands for 'source' variable.
+- Inspector variables in scripts are identified by the vargam particle. 'vargamspine' is the public inspector variable for 'spine'.
+- All of URG! functions and subroutines are preficed with 'met' (method). 'metcreateragdoll' is the function for 'create ragdoll'.
+- Serialized class variables are identified by the 'prop' (property) particle. 'propindexes' is the 'indexes' property of its class.
+- Some obsolete warnings are intended: URG! uses defines to keep compatibility with Unity 3 and Unity 4 and thus needs to use obsolete methods in certain cases. These are harmless in production code and will be stripped from future versions of URG!
+
+PART 1: TRANSITION INTO RAGDOLL
+
+There's three types of ragdolls available.
+a) Instantiated ragdolls, original game models are de facto replaced with a prefabricated ragdoll of the same game model. Best performance and ease of use, but limited functionality.
+
+This method is available thanks to the clsragdollify class, and can be seen in action in the Soldier character of the demo scene.
+
+Steps:
+1- Create a ragdoll for the target gameobject model, using URG!
+2- Save the ragdoll in a new prefab (might be called <originalmodelname>_ragdoll, for ease of use. In case of a 'ratman' gameobject, the ragdoll prefab would be thus called 'ratman_ragdoll').
+3- Attach the clsragdollify script to the original prefab (i.e. 'ratman')
+4- Drag the ragdoll prefab into this script's vargamragdoll slot in the inspector
+5- Whenever needed, issue a call the metgoragdoll function from the clsragdollify component
+NOTE: the two armatures must be identical, otherwise the procedure won't work properly
+
+Code example:
+
+//...
+//fetch the ragdollify component
+clsragdollify varenemyragdollifier = varenemy.GetComponent<clsragdollify>();
+//call the ragdolling function: will instantiate the ragdoll prefab and copy the bone positions of the original gameobject into it
+varenemyragdollifier.metgoragdoll();
+//destroy the original gameobject
+Destroy(varenemy);
+//...
+
+b) Kinematic ragdolls, are game models with all ragdoll physic components installed, but with 'Kinematic' rigidbodies unchecked. Can be used to interact dynamically with the environment, and does not require a separated prefabbed gameobject (useful in networking situations). Good functionality but requires collecting information of the physics components.
+
+This functionality is available thanks to the clskinetify class, and is implemented in the lerpz_kinematic gameobject of the demo scene.
+
+Steps:
+1- Create a ragdoll for the target gameobject model using URG!, specifying the original character gameobject as the source and checking the "Kinematic ragdoll" option
+2- Setup a condition that turns the character model into physic driven
+3- Transition the rigidbodies from "Kinematic" to non kinematic with a call to clsurgutils.metgodriven(transform)
+
+Code example:
+
+//... into user chosen event code (press of a button, trigger, collision, etc.)
+//uncheck all rigidbody Kinematic flags of this transform and its children
+clsurgutils.metgodriven(transform);
+//...
+
+c) "Ragdollimbified" ragdolls, are advanced kinematic ragdolls that were created with installation of the Urgent Classes. Best compromise in performance and usability, uses a data structure to individually reference all ragdolled body parts.
+
+This functionality is available thanks to the clsurgent and clsurgentactuator classes, and can be seen in action in the ratman_ragdollimbified gameobjects of the demo scene.
+
+Steps:
+1- Create a ragdoll for the target gameobject model using URG!, specifying the original character gameobject as the source and checking the "Add URG entity scripts to body parts" option
+2- Access the clsurgent component in the host, and specify an unique vargamcasemanager value in the inspector
+3- Inherit or edit the clsurgentactuator class, to add a vargamcasemanager condition that implements the desired ragdoll behavior on trigger or collision (collision being default URG! colliders behavior)
+OR
+3- Reference the clsurgent script on the target gameobject, and use the vargamnodes structure to perform a transition
+
+Code example, clsurgentactuator class, using the case manager:
+
+void OnCollisionEnter(Collision varpsource) {
+	//...
+	switch (vargamurgentsource.vargamcasemanager) {
+		//example case vargamcasemanager = -10
+		case -10:
+			if (vargamactuatorenabled) {
+				//if we're colliding with a 'missile' tagged object
+				if (varpsource.gameObject.tag == "missile") {
+					//attach the varpsource object to this bodypart, so that for example an arrow gets stuck
+				}
+			}
+			break;
+		default:
+			break;
+	}
+	//...
+}
+
+OR clsurgentactuator class, using the urgent manager:
+
+//this  approach requires a sphere collider trigger in the main gameobject
+void OnTriggerEnter(Collider varsource) {
+	//...
+	//trigger only with the car's 'bumper' collider
+	if (varsource.name == "bumper") {
+		//fetch the urgent manager
+		clsurgent varurgent = gameObject.GetComponent<clsurgent>();
+		//call the physics driving utility on the manager
+		clsurgutils.metdriveurgent(varurgent);
+	}
+	//...
+}
+
+
+
+
+PART 2: ANIMATION STATES MANAGER
+
+An often required functionality is the transition from ragdoll to animation, which differently than animation to ragdoll, involves several mesh specific elements, besides the standard and 'simple' physics components.
+URG! offers a superior functionality in regards to standard Unity's methods since, through the implementation of the clsurganimationstatesmanager class, it achieves superior performance and usability thanks to a dedicated data structure to perform the animation states actions.
+Additionally, two straight forward routines are implemented to make transitioning as simple as possible: by all means, a new animation is created to perform the transition, so its clip can be replayed, modified and be otherwise used as desired!
+With URG! version 4.6, in particular, the ASM is also available for Mecanim animated characters.
+
+This utility can be seen in action thanks to the Alien_ASM gameobject in the demo scene.
+Additionally, thanks to the __URG_ASM Tester scene, it becomes possible to easily compile ASM and test results for any custom model.
+
+LEGACY ANIMATION
+
+Steps:
+1- Create a ragdoll using URG!
+2- Start the animation states manager utility and memorize the animation states (GAMEOBJECT=> CREATE OTHER=> CHARACTER ANIMATION STATES)
+3- Determine the play mode condition after which a transition is needed, and include a call to the clsurgutils.metcrossfadetransitionanimation
+4- Activate the functionality with a proper function call
+
+Code example:
+
+//..
+	public Rigidbody varragdollbody; //this is a very important variable that we make public for ease of access: it is necessary that we specify the object which name is stored into the vargamrootname variable of the clsurganimationstatesmanager host
+//..
+	if (varfallingorsliding) {
+		if (varragdollbody.velocity.sqrMagnitude < 3) {
+			//we are almost still, so we can try to get up
+			Transform varbodytransform = varragdollbody.transform;
+			RaycastHit varraycasthit;
+			//use raycasting to add contest to the get up animation
+			if (Physics.Raycast(varbodytransform.position, varbodytransform.forward, out varraycasthit, 1, vargamlayermask)) {
+				//raycast hits forward, so we're face down
+				//we will stick to the get_up animation state
+				animation["get_up"].wrapMode = WrapMode.ClampForever;
+				//pass the root asm bone to the transition animation routine (the bone's name is stored in the varasm.vargamrootname string)
+				//IMPORTANT: the root transform of the ragdoll and that of the character are normally different, which means that these will most likely have different positions and rotations at the end of a ragdoll process.
+				//it is fundamental to pass the vargamrootname transform as first parameter, and the ragdoll topmost transform as fourth parameter to translate the gameobject to the ragdoll before transition, to avoid that the animation plays in a different position than the ragdoll!
+				clsurgutils.metcrossfadetransitionanimation(varbodytransform, "get_up", 1f, transform, "get_up");
+			}
+			else {
+				//raycast doesn't hit forward, so we're face up
+				//we will stick to the get_up_back animation state
+				animation["get_up_back"].wrapMode = WrapMode.ClampForever;
+				//IMPORTANT: the root transform of the ragdoll and that of the character are normally different, which means that these will most likely have different positions and rotations at the end of a ragdoll process.
+				//it is fundamental to pass the vargamrootname transform as first parameter, and the ragdoll topmost transform as fourth parameter to translate the gameobject to the ragdoll before transition, to avoid that the animation plays in a different position than the ragdoll!
+				clsurgutils.metcrossfadetransitionanimation(varbodytransform, "get_up_back", 1f, transform, "get_up_back");
+			}
+			//enabled = false;
+			vartriggered = false;
+			CancelInvoke("metgetup");
+		}
+	}
+//..
+
+MECANIM ANIMATION
+
+Steps:
+1- Create a ragdoll using URG!
+2- Add relevant 'transition' animations to the Animator controller. These animations are essentially the animations the ragdolls will morph into,
+   and are by all means normal animations.
+   Typically, there will be at least a couple of transition animations, one to raise the character from the back, and one from the front.
+   These animations will transition into any relevant state (for example idle) by any desired rule (time, trigger, variable, etc.).
+3- Add a controller to the character so that basic animation to ragdoll can be performed, and there's a controller script to transition from ragdoll to animation.
+4- Start the animation states manager utility and memorize the animation states (GAMEOBJECT=> CREATE OTHER=> CHARACTER ANIMATION STATES)
+4- Activate the functionality with a proper function call
+
+Code example:
+
+//.. somewhere in the character controller code, the character turns into ragdoll
+		varanimator = characterGO.GetComponent<Animator>();			
+		//go-ragdoll: Disable the animator so that the ragdoll can take over
+		varanimator.enabled = false;
+		U_r_g_utils.clsurgutils.metgodriven(characterGO.transform, varcharacterGOcontrollerspeed);
+//.. elsewhere in the character controller code, the character goes from ragdoll to animation (use the same raycast logic as for legacy, to determine the name of the transition animation, based on ragdoll facing)
+		StartCoroutine(U_r_g_utils.clsurgutils.metinterpolatetoanimationstate(characterGO.transform, "get_up_back", 0.5f, true));
+//..
+
+
+
+PART 3: PART SEPARATION (OR DISMEMBERING OR 'BIG D')
+
+Part separation is one of the all time, most desired, and often impossible, task for game model features. Before the dismemberator, this was particularly problematic or completely unfeasible when access to the original model was unavailable, or when it became too expensive or complicated for the project, because of the need to manually alter the original 3D models and animations to fit the purpose.
+URG!s 'BIG D' is the solution: a next generation tool that, thanks to the clsdismemberator advanced data class, allows real time, instantaneous and physical separation of any skinned gameobject transform from its original model, without the need to make changes to the existing, or future, 3D meshes.
+The functionality is based on compiled and compressed data structures that allow on-the-fly access to te underlying 3D elements, hosted in a single SkinnedMeshRenderer component with any number of materials.
+Additionally, one of the most powerful features of the approach we've chosen, is that Big D's modifications don't alter the animation system (which is something that happens with similar tools, even on different platforms), so it becomes possible to flawlessly detach a part while an animation keeps running.
+Lastly, separation allows specification of three important but optional parameters. The first one is the textured triangulator material, which is used to 'cover the gap' that the separation might produce when detaching for example a limb (3D models are 'hollow'). The second and third parameters are gameobjects, that when passed are instantiated for the parent and child separation transforms, respectively (for example to produce particles on separation).
+
+Additionally, you'll notice the "Select the SKM wrapper target" slot. This is used to install a 'snapshot' of the model's Skinned Mesh Renderer elements (triangles, vertices, etc.). This can be used in a number of ways to manipulate the original mesh, and restore it afterwards, but in the scene it's been setup in the Zombie_D gameobject, to allow proper import on Unity 4 installations. Without the SKM wrapper and the clsmeshpostprocessor class, Unity 4 produces triangle errors on dismember.
+The SKM wrapper target slot is entirely optional, and only useful when custom mesh manipulation is needed.
+
+There are two different instance types of this powerful feature in the demo scene: the Zombie_D and Bike_D gameobjects.
+
+Steps:
+1- Create a ragdoll using URG!, or configure a skinned gameobject with proper colliders, for each part that gets detached (dismemberator relies on colliders and skinned bones to successfully compile)
+2- Start the dismemberator utility and inject the class into the ragdolled gameobject (GAMEOBJECT=> CREATE OTHER=> ULTIMATE RAGDOLL DISMEMBERATOR)
+	IMPORTANT: due to the time consuming nature and complexity of the compilation process, we've included a tested, but experimental, graphical progress advancement method. Please make sure that the window has focus by clicking on it to make sure that it keeps on working at full pace.
+3- In any code event, issue a call to clsurgutils.metdismember to separate any proper part of the target gameobject (must be skinned, and have at least a collider)
+
+Code example (generic part separation):
+
+//.. class declarations
+public Transform vargampart;
+public Material vargamstumpmaterial;
+public GameObject vargamparticleparent, vargamparticlechild;
+//..
+
+	//..designated separation point inside any user function
+	clsdismemberator varD = GetComponent<clsdismemberator>();
+	if (varD != null) {
+		clsurgutils.metdismember(transform, varD.vargamstumpmaterial, varD, varD.vargamparticleparent, varD.vargamparticlechild);
+	}
+	else {
+		Debug.LogError("No Dismemberator Class in host.");
+	}
+	//..
+	
+Code example (using the URGent classes):
+
+	//we are relying on the urgent parts colliders, and assume the ragdoll is physics driven by the time we want to perform separation. this can be achieved for example with the following call
+	//clsurgutils.metdriveurgent(vargamurgentsource);
+	//using the vargamurgentsource property of the clsurgentactuator class
+	void OnCollisionEnter(Collision varpsource) {
+		//this switch is used to streamline the urgent integration into multiple object, without the need to create additional scripts that inherit clsurgent
+		//vargamcasemanager is a public variable which value is set into the inspector, for the clsurgent host
+		switch (vargamurgentsource.vargamcasemanager) {
+			//example case
+			case -11:
+				//ignore disabled actuators, or enabled actuators that don't collide with 'missile' or 'terrain' tagged gameobjects
+				if (!vargamactuatorenabled || (varpsource.gameObject.tag != "missile" && varpsource.gameObject.tag != "terrain")) {
+					return;
+				}
+				clsdismemberator varD = vargamurgentsource.GetComponentInChildren<clsdismemberator>();
+				if (varD != null) {
+					float varroll = Random.Range(0,0.99f);
+					if (varroll > 0.75f) {
+						clsurgutils.metdismember(transform, varD.vargamstumpmaterial, varD, varD.vargamparticleparent, varD.vargamparticlechild);
+					}
+				}
+				else {
+					Debug.LogError("No clsragdollifyDismemberator Class in source D host.");
+				}
+				break;
+			default:
+				Debug.LogError("No source manager for case " + vargamurgentsource.vargamcasemanager);
+				break;
+		}
+
+
+
+PART 4: AVAILABLE CLASSES AND UTILITIES
+
+There's basically two types of classes included in the project: helper and utilities. Helper classes are demo specific, and illustrate an usage scenario that's connected to the demo objects. These can easily be translated into a different project, but most likely will require editing in doing so (to adapt layer collision or tag names, etc.).
+Utility classes are reusable and project unrelated, these can be integrated into a new project gameobject or can be accessed statically.
+Note that all user code is commented. Access the individual classes for implementation details. In particular, user interest should focus on the utility classes because of their reusability.
+
+clslayersetter
+	hosted in the arclayermanager namespace in free and standard versions, this is an utility that replicates the physics manager of the editor settings, to allow proper transition into an unity 4 import.
+
+clsactorcontroller
+	helper class to move a character with a character controller. includes advanced ragdoll turning function on free fall and scene manager activation
+	public method metactivate()
+		simple activation function for demo scene purpose, called from the clscameratarget script when a relevant scenario is initialized
+
+clsasmhelper
+	demo scene helper class used to demonstrate the animation states manager.
+	no public methods
+
+clscameratarget
+	class for demo camera scene management	
+	no public methods
+
+clsbike
+	class to drive the demo scene bike
+	no public methods
+
+clscannon
+	simple but thorough cannon script that allows manual fire of projectiles for the part break demo
+	no public methods
+
+clscannonball
+	basic projectile class, not used in the demo scene
+	no public methods
+
+clscollision
+	class to facilitate trigger and collision on demo scene objects
+	no public methods
+
+clsdismemberator
+	hosted in the U_r_g_utils namespace in the free and standard versions. data class to host Big D functionality. gets installed automatically during the dismemberator compilation process, and needs be referenced by dismemberator routines
+	no public methods
+
+clsdismemberatortester
+	basic class to test a gameobject's rigidbodies against the dismemberator utility, to determine if compilation and separation complete successfully for all parts.
+	apply this class to a 'spectator' gameobject (for example the camera), since it will be used to destroy and respawn the target gameobject if so desired.
+	no public methods
+
+clskinetify
+	simple helper class that demonstrates the use of the utility that turns a kinematic ragdoll into a driven ragdoll
+	no public methods
+
+clsdrop
+	hosted in the U_r_g_utils namespace in the free and standard versions. helper class to simply clear a gameobject parent and turn the respective rigidbody into physics driven
+	no public methods
+
+clsmeshpostprocessor
+	utility class used primarily to maintain compatibility with Unity4 during model import. this is required in particular for dismemberment purposes. usage of this class is paired with installation of the Dismemberator SKM wrapper.
+	no public methods
+
+clsragdollhelper
+	helper class to trigger the ragdoll function in a gameobject with a ragdollifier class attached
+	public method metgoragdoll()
+		wrapper to the clsragdollify class metgoragdoll function
+
+clsragdollify
+	utility class that can be used to turn models into ragdolls, instantiating a ragdoll prefab
+	public Transform vargamragdoll: inspector slot for the ragdoll to instantiate
+	public method metgoragdoll(): instantiates the vargamragdoll object, which should correspond to a ragdoll, and copies each 'transform' of the host into the equally named transform of the instance
+
+clsragdollimbifier
+	hosted in the U_r_g_utils namespace in the free and standard versions. helper class to showcase advanced ragdoll functions based on the URG entities manager
+	public clsurgent vargamurgentities: inspector slot for the URGent gameobject to showcase
+	no public methods
+
+clsragdolljolt
+	utility class that will fetch all rigidbodies of its host gameobject, and apply a random force and torque to them, on Start()
+	no public methods
+	public float vargamforcemin, vargamforcemax, vargamtorquemin, vargamtorquemax: minimum and maximum values used for force and rotation random values
+	public ForceMode vargamforcemode: the type of force to apply
+
+clsragdolljolturgent
+	utility class equivalent to clsragdolljolt, but specific for URGent characters, can be used to specifically produce a realistic jolt (for example to simulate tumbling or slipping, by only applying forces to the upper or lower body)
+	no public methods
+	public float vargamforcemin, vargamforcemax, vargamtorquemin, vargamtorquemax: minimum and maximum values used for force and rotation random values
+	public ForceMode vargamforcemode: the type of force to apply
+	public bool vargamjoltspine, vargamjolthead, vargamjoltarmleft, vargamjoltarmright, vargamjoltlegleft, vargamjoltlegright.
+
+clsshowcasehelper
+	manager script of the showcase, is instantiated in all scene gameobjects that interact with the camera manager, and performs actions related to demo sections.
+	public int vargamaction: indicates which activation case to serve, and determines what scene gameobject the script is 'attached' to
+	public GameObject vargamactor: can be used case by case as a target for the vargamaction
+	public method metspawn(): straightforward call to instantiate the vargamactor and send a metactivate message to it. The metactivate listener is hosted in this same class.
+
+clstrigger
+	helper class to trigger the physics driven activation of a ragdolled kinematic character
+	no public methods
+
+clstriggerurgent
+	helper class equivalent to clstrigger but specific to URGent classes, has the benefit to cycle through the ragdoll rigidbodies alone (extra gameobject rigidbodies remain in their original state)
+	self documented: 
+
+clsurgent
+	utility class that is responsible for body part operations and that stores the URGed structure, to easily access and interact with ragdolled body parts
+	public clsurgentnodes vargamnodes: the list of the nodes that constitute the ragdoll. iterating through this structure allows physical interaction by bodypart. compiled by the ragdoll generator when the 'add URGent classes' option is checked during creation
+	public int vargamcasemanager: this is an arbitrary value that can be used in the clsurgetnactuator class as a case switch. it will allow for example differentiation between a 'player' ragdoll with vargamcasemanager = 0 and a 'monster' ragdoll with vargamcasemanager = 1
+	public method metcollsionentered: 'HUB' instance of the collision event, that can be issued by any of the actuators of this URGent ragdoll
+	public method metcollidertriggered: 'HUB' instance of the trigger event, that can be issued by any of the actuators of this URGent ragdoll
+
+clsurgentactuator
+	hosted in the U_r_g_utils namespace in the free and standard versions. utility class that's installed in all URGent ragdoll parts, that can be used to customize behavior based on the ragdoll part type (arm, leg, torso, etc.)
+	public clsurgutils.enumparttypes vargamparttype: the body part type, from the types available (head, spine, arms, legs)
+	public string vargampartinstancename: the name of the part to which the instance is attached. can be used as a parameter for URGent calls.
+	public int vargampartindex: the part index in the entities array. allows iteration or direct acess of the part through clsurgutils, with the URGent manager
+	public bool vargamactuatorenabled: basic activator switch. Basically used to avoid unnecessary calls on objects that have alreaby been subjected to physic actions
+	public clsurgent vargamurgentsource: reference to the source root urgent manager class. critical value that stores the URGent manager. can be used to trigger the hub functions, or to normally access the ragdoll root
+	public Transform vargamsource: reference to the transform of this part's ragdoll parent
+	no public methods
+
+clsurgentnodes
+	hosted in the clsurgent class. utility data class that's intended to function like a tree, for storing URGed object references, and to easily allow actions based on ragdoll exploration routines. clsurgent relies on it to store gameobject parts information
+	public Transform[] vargamspine, vargamhead, vargamarmleft, vargamarmright, vargamlegleft, vargamlegright: named arrays where the component transforms of the related body parts are stored
+
+clsurganimationstatesmanager
+	hosted in the U_r_g_utils namespace in the free and standard versions. utility class that holds the data to manage animation states. it must be present in any character that uses animation states, and is compiled by URG's Animation States Manager editor.
+	public string vargamrootname: root name of the target character. it's normally the name of the parent transform of the skinned mesh renderer. this is used to loosely ensure that the animation states are used against a character that shares the same animation root.
+	public method metremove(string varpname): removes an animation state from the clsurganimationstatesmanager host
+	public method metadd(string varpname, clsanimationstatesnapshot): adds an animation state to the clsurganimationstatesmanager
+
+clsdismemberatorwrapper
+	wrapper class to overwrite a target Unity4 skinned mesh renderer triangles and maintain compatibility with an Unity 3.5 Dismemberator compilation. NOTE: this class must be used when the clsmeshpostprocessor script ensures that 3d mesh optimization is turned off on import.
+	public SkinnedMeshRenderer vargskm: the skinned mesh renderer that will be used to restore the triangle information
+	public bool vargforcewrap: used to force triangle restore regardless of triangle array difference
+	no public methods
+	
+clsurgutilities
+	hosted in the U_r_g_utils namespace in the free and standard versions. advanced utility class which hosts all global URG! methods.
+	public method metcrossfadetransitionanimation: crossfade an animated character from the current pose (might be animation or ragdoll) to the first frame of the indicated destination animation
+	public method metcreatetransitionanimation: this function creates a clip to transit from ragdoll to animation. the method relies on a properly compiled animation states manager class. NOTE: the animation is normally not reusable, since it stores the 'instantaneous' ragdoll pose, which is certainly different from subsequent ragdoll poses, so this function should be called as part of an animation creation process, for example with metplaytransitionanimation
+	public method metconnectbodies: This procedure's objective is to set varpsource's joint connected body property, assigning varptarget's rigidbody to it, and eventually adding or modifying preexisting such elements
+	public method metgodriven: turns a kinematic ragdoll into a driven ragdoll. This procedure is particularly useful to animate 'roadside' objects or scenery objects that need to become physical when they receive a trigger (or otherwise a collision when implemented like so) using this class can save time and resources in those cases, since it avoids the use of a specific ragdoll prefab and a separate scripted gameobject NOTE: can be used to turn a driven ragdoll into a kinematic ragdoll, too, by passing the secondary optional parameter as true
+	public method metgotangible: static instance of the 'enable colliders' feature from the edtragdollkinetifier utility, that sets an object collider state. The main purpose of this function is to allow a physical, kinematic child gameobject to function as a child of a physic driven gameobject without interfering with its physical attributes.
+	public method metdriveurgent: URG entities alternative to metgodriven. Will scan the urgent array and ragdollify all children of the parameter part. Accessing this procedure is convenient in terms of efficiency and cpu since it's 'cheaper' than getcomponentsinchildren, when the source is based on the actual URGent armature NOTE: can be used to URG drive a clsurgent gameobject, when the actuator is passed as null
+	public method metdrivebodypart: wrapper for the metdriveanimatebodypart with the varpanimate parameter as false, will break an urgent object and make it react to physics
+	public method metdriveanimatebodypart: Auxilliary function to drive an urgent object, can be used to directly ragdollimbify a body part without the need of a collision or trigger effect NOTE: most likely the animation component will require the 'Animathe physics' check enabled
+	public method metbuildpartpath: Basic function to determine a body part's path in respect to its source. NOTE: the path does NOT include the root.
+	public method metcreateplaceholder: creates a 3d sphere of a chosen color in space. useful for debug purposes.
+	public method metcreatetriangle: creates a 3d mesh triangle of the specified color. useful for debug purposes
+	public method metcreateplane: creates a 3d mesh plane gameobject and returns it. useful for debug purposes.
+	public method metdismember: wrapper for the metdismemberpart function with varpcinematiccut and varplastcut parameters as true
+	public method metdismemberpart: separates a body part of a clsdismemberator compiled gameobject
+	public method metdismemberrigged: Checks the intersection between the passed plane and an object, based on distance, and performs a cut of the heaviest of the bones caught in the contactpoint-distance sphere. This means that, if the dismember catches an arm and a shoulder bone, the shoulder bone will be cut, and the arm and all its children will detach. NOTE: this function is in experimental and is a less polished alternative than metdismember
+	public method metprint: utility function to display messages in behalf of Debug.Log 	
+
+edtragdollkinetifier
+	hosted in the U_r_g_standardlib library in the free and standard versions. editor utility to turn gameobject rigidbodies into kinematic or physic driven
+	no public methods
+
+edturganimationstates
+	hosted in the U_r_g_standardlib library in the free and standard versions. editor utility to install the animation states manager, fundamental to perform dynamic and real time ragdoll to animation and animation to animation transitions
+	no public methods
+
+U_r_g
+	hosted in the U_r_g_standardlib library in the free and standard versions. editor utility to install the physical components necessary to create gameobject ragdolls in a single click
+	no public methods
+
+U_r_g_D
+	hosted in the U_r_g_standardlib library in the free and standard versions. editor utility to install the dismemberator manager, necessary to perform realtime gameobject separations

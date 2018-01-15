@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: 3906bad6d87db754bac5a5299b609a1d
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_R
+    100004: Armature
+    100006: Elbow_L
+    100008: Elbow_R
+    100010: Foot_L
+    100012: Foot_R
+    100014: Hand_L
+    100016: Hand_R
+    100018: Head
+    100020: hips_L
+    100022: hips_R
+    100024: Knee_L
+    100026: Knee_R
+    100028: MiddleSpine
+    100030: Neck
+    100032: Ratman
+    100034: //RootNode
+    100036: Root
+    100038: Shoulder_L
+    100040: Shoulder_R
+    100042: Arm.L
+    100044: Arm.R
+    100046: Elbow.L
+    100048: Elbow.R
+    100050: Foot.L
+    100052: Foot.L_end
+    100054: Foot.R
+    100056: Foot.R_end
+    100058: Hand.L
+    100060: Hand.L_end
+    100062: Hand.R
+    100064: Hand.R_end
+    100066: Head_end
+    100068: hips.L
+    100070: hips.R
+    100072: Knee.L
+    100074: Knee.R
+    100076: Shoulder.L
+    100078: Shoulder.R
+    400000: Arm_L
+    400002: Arm_R
+    400004: Armature
+    400006: Elbow_L
+    400008: Elbow_R
+    400010: Foot_L
+    400012: Foot_R
+    400014: Hand_L
+    400016: Hand_R
+    400018: Head
+    400020: hips_L
+    400022: hips_R
+    400024: Knee_L
+    400026: Knee_R
+    400028: MiddleSpine
+    400030: Neck
+    400032: Ratman
+    400034: //RootNode
+    400036: Root
+    400038: Shoulder_L
+    400040: Shoulder_R
+    400042: Arm.L
+    400044: Arm.R
+    400046: Elbow.L
+    400048: Elbow.R
+    400050: Foot.L
+    400052: Foot.L_end
+    400054: Foot.R
+    400056: Foot.R_end
+    400058: Hand.L
+    400060: Hand.L_end
+    400062: Hand.R
+    400064: Hand.R_end
+    400066: Head_end
+    400068: hips.L
+    400070: hips.R
+    400072: Knee.L
+    400074: Knee.R
+    400076: Shoulder.L
+    400078: Shoulder.R
+    4300000: Ratman_001
+    4300002: Ratman
+    7400000: ready
+    7400002: run
+    7400004: walk
+    7400006: armscrossed
+    7400008: balance
+    7400010: dive
+    7400012: get_up
+    7400014: get_up_back
+    7400016: stand
+    7400018: Armature|armscrossed
+    7400020: Armature|balance
+    7400022: Armature|dive
+    7400024: Armature|get up
+    7400026: Armature|get_up_back
+    7400028: Armature|run
+    7400030: Armature|stand
+    11100000: //RootNode
+    13700000: Ratman
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
